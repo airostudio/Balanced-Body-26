@@ -24,7 +24,7 @@ export const Quiz: React.FC = () => {
   const handleNext = () => {
     if (currentQuestionIndex < totalQuestions - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
-      window.scrollTo(0, 0);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       // Quiz completed, navigate to subscription page
       navigate('/subscription');
@@ -34,7 +34,7 @@ export const Quiz: React.FC = () => {
   const handleBack = () => {
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex(currentQuestionIndex - 1);
-      window.scrollTo(0, 0);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
@@ -53,7 +53,7 @@ export const Quiz: React.FC = () => {
     }
     if (currentQuestion.type === 'input') {
       if (currentQuestion.inputType === 'height' || currentQuestion.inputType === 'weight') {
-        return currentAnswer && typeof currentAnswer === 'object';
+        return currentAnswer && typeof currentAnswer === 'string';
       }
       return currentAnswer !== undefined && currentAnswer !== '';
     }
@@ -65,39 +65,41 @@ export const Quiz: React.FC = () => {
     if (currentQuestion.type === 'info') {
       const timer = setTimeout(() => {
         handleNext();
-      }, 3000);
+      }, 4000); // Increased to 4 seconds for better readability
       return () => clearTimeout(timer);
     }
   }, [currentQuestion]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen" style={{ backgroundColor: '#fafaf9' }}>
       {/* Header */}
-      <div className="bg-white border-b sticky top-0 z-10">
-        <div className="max-w-2xl mx-auto px-4 py-4">
-          <div className="flex items-center justify-between mb-3">
-            {currentQuestionIndex > 0 && currentQuestion.type !== 'info' && (
+      <div className="bg-white shadow-sm sticky top-0 z-10">
+        <div className="max-w-2xl mx-auto px-5 py-5">
+          <div className="flex items-center justify-between mb-4">
+            {currentQuestionIndex > 0 && currentQuestion.type !== 'info' ? (
               <button
                 onClick={handleBack}
-                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                className="p-2.5 hover:bg-gray-100 rounded-xl transition-all active:scale-95"
+                aria-label="Go back"
               >
                 <svg
-                  className="w-6 h-6 text-gray-600"
+                  className="w-6 h-6 text-gray-700"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
+                  strokeWidth={2.5}
                 >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    strokeWidth={2}
                     d="M15 19l-7-7 7-7"
                   />
                 </svg>
               </button>
+            ) : (
+              <div className="w-11" /> /* Spacer */
             )}
-            <div className="flex-1" />
-            <div className="text-sm text-gray-500 font-medium">
+            <div className="text-base text-gray-600 font-semibold tracking-wide">
               {currentQuestionIndex + 1}/{totalQuestions}
             </div>
           </div>
@@ -106,7 +108,7 @@ export const Quiz: React.FC = () => {
       </div>
 
       {/* Question Content */}
-      <div className="max-w-2xl mx-auto px-4 py-8">
+      <div className="max-w-2xl mx-auto px-5 py-8 pb-24">
         {currentQuestion.type === 'info' && currentQuestion.infoContent ? (
           <InfoScreen
             title={currentQuestion.infoContent.title}
@@ -117,14 +119,16 @@ export const Quiz: React.FC = () => {
           />
         ) : (
           <>
-            <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 leading-tight">
               {currentQuestion.question}
             </h1>
             {currentQuestion.description && (
-              <p className="text-gray-600 mb-6">{currentQuestion.description}</p>
+              <p className="text-gray-600 text-base mb-8 leading-relaxed">
+                {currentQuestion.description}
+              </p>
             )}
 
-            <div className="mt-6">
+            <div className="mt-8">
               {currentQuestion.type === 'single-choice' && currentQuestion.options && (
                 <SingleChoiceQuestion
                   options={currentQuestion.options}
@@ -154,30 +158,32 @@ export const Quiz: React.FC = () => {
 
         {/* Next Button */}
         {currentQuestion.type !== 'info' && (
-          <button
-            onClick={handleNext}
-            disabled={!isAnswerValid()}
-            className={`w-full mt-8 py-4 rounded-xl font-semibold text-lg transition-all ${
-              isAnswerValid()
-                ? 'bg-primary-500 hover:bg-primary-600 text-white shadow-lg'
-                : 'bg-gray-200 text-gray-400 cursor-not-allowed'
-            }`}
-          >
-            {currentQuestionIndex === totalQuestions - 1 ? 'See My Plan' : 'Continue'}
-            <svg
-              className="inline-block ml-2 w-5 h-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M13 7l5 5m0 0l-5 5m5-5H6"
-              />
-            </svg>
-          </button>
+          <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-5 shadow-2xl md:relative md:shadow-none md:border-0 md:bg-transparent md:p-0 md:mt-10">
+            <div className="max-w-2xl mx-auto">
+              <button
+                onClick={handleNext}
+                disabled={!isAnswerValid()}
+                className={`btn-primary w-full text-lg font-bold py-4 flex items-center justify-center gap-2 ${
+                  !isAnswerValid() ? 'opacity-40 cursor-not-allowed' : ''
+                }`}
+              >
+                {currentQuestionIndex === totalQuestions - 1 ? 'See My Plan' : 'Got it'}
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
         )}
       </div>
     </div>
