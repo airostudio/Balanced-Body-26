@@ -4,6 +4,8 @@ import { Quiz } from './pages/Quiz';
 import { Subscription } from './pages/Subscription';
 import { Payment } from './pages/Payment';
 import { Dashboard } from './pages/Dashboard';
+import { ExerciseLibrary } from './pages/ExerciseLibrary';
+import { ExercisePlayer } from './pages/ExercisePlayer';
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
         <Route path="/subscription" element={<Subscription />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/library" element={<ExerciseLibrary />} />
+        <Route path="/exercise/:exerciseId" element={<ExercisePlayer />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>
