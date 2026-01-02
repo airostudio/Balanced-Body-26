@@ -40,12 +40,12 @@ export const Home: React.FC = () => {
                   ✨ Trusted by 50,000+ seniors worldwide
                 </p>
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-2 leading-tight">
                 Gentle Movement,
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-primary-600">
-                  Powerful Results
-                </span>
+                <span className="block">Powerful Results</span>
               </h1>
+              {/* Green underline */}
+              <div className="w-32 md:w-40 h-2 bg-green-500 rounded-full mb-6 mx-auto lg:mx-0"></div>
               <p className="text-lg md:text-xl text-gray-700 mb-8 leading-relaxed">
                 Transform your health with Tai Chi designed specifically for seniors.
                 Lose weight, improve balance, and feel younger—all from the comfort of home.
@@ -97,9 +97,9 @@ export const Home: React.FC = () => {
             <div className="relative">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1582134563952-1b54c2b8d2f5?w=800&h=900&fit=crop&q=80"
-                  alt="Senior practicing Tai Chi in a peaceful outdoor setting"
-                  className="w-full h-[500px] md:h-[600px] object-cover"
+                  src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&h=900&fit=crop&q=80"
+                  alt="Older couple practicing Tai Chi Walking together in a peaceful park"
+                  className="w-full h-[400px] sm:h-[500px] md:h-[600px] object-cover"
                   onError={(e) => {
                     // Fallback to gradient if image fails
                     e.currentTarget.style.display = 'none';
