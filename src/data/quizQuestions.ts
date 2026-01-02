@@ -166,6 +166,7 @@ export const quizQuestions: QuizQuestion[] = [
         'Supports recovery, not over-training',
       ],
       stats: '*Based on data from 1.3m workouts.',
+      image: '/quiz/stress-relief-intro.jpg',
     },
   },
   {
