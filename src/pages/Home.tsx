@@ -44,8 +44,29 @@ export const Home: React.FC = () => {
                 Gentle Movement,
                 <span className="block">Powerful Results</span>
               </h1>
-              {/* Green underline */}
-              <div className="w-32 md:w-40 h-2 bg-green-500 rounded-full mb-6 mx-auto lg:mx-0"></div>
+              {/* Brush stroke underline */}
+              <div className="mb-6 mx-auto lg:mx-0 w-40 md:w-48">
+                <svg viewBox="0 0 200 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
+                  <path
+                    d="M5 10 Q 25 6, 50 9 T 100 10 Q 125 11, 150 8 T 195 10"
+                    stroke="#22c55e"
+                    strokeWidth="6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    fill="none"
+                    opacity="0.9"
+                    style={{
+                      filter: 'url(#roughness)',
+                    }}
+                  />
+                  <defs>
+                    <filter id="roughness">
+                      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" result="noise" seed="2" />
+                      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" xChannelSelector="R" yChannelSelector="G" />
+                    </filter>
+                  </defs>
+                </svg>
+              </div>
               <p className="text-lg md:text-xl text-gray-700 mb-8 leading-relaxed">
                 Transform your health with Tai Chi designed specifically for seniors.
                 Lose weight, improve balance, and feel younger—all from the comfort of home.
