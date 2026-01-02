@@ -51,12 +51,45 @@
     transition-duration: 300ms;
     border: 2px solid rgb(231 229 228);
     cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   }
 
   .btn-secondary:hover {
     border-color: #ff9b40;
     color: #ff9b40;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 155, 64, 0.15);
+  }
+
+  .btn-secondary:active {
+    transform: translateY(0);
+  }
+
+  /* Alternate button with opposite/contrasting colors (cool teal/blue vs warm orange) */
+  .btn-alt {
+    background: linear-gradient(135deg, #14b8a6 0%, #0891b2 100%);
+    color: rgb(255 255 255);
+    font-weight: 600;
+    padding-top: 0.875rem;
+    padding-bottom: 0.875rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 0.75rem;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+    box-shadow: 0 4px 12px rgba(20, 184, 166, 0.25);
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-alt:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(20, 184, 166, 0.35);
+  }
+
+  .btn-alt:active {
+    transform: translateY(0);
   }
 
   .card {

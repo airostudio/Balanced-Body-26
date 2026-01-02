@@ -9,7 +9,7 @@ export const freeExercises: Exercise[] = [
     duration: 8,
     difficulty: 'beginner',
     category: 'Introduction',
-    thumbnailUrl: '/thumbnails/intro.jpg',
+    thumbnailUrl: '/thumbnails/free-intro.jpg',
     videoUrl: '/videos/intro.mp4',
     benefits: [
       'Understand Tai Chi principles',
@@ -26,7 +26,7 @@ export const freeExercises: Exercise[] = [
     duration: 10,
     difficulty: 'beginner',
     category: 'Walking',
-    thumbnailUrl: '/thumbnails/mindful-steps.jpg',
+    thumbnailUrl: '/thumbnails/free-mindful-steps.jpg',
     videoUrl: '/videos/mindful-steps.mp4',
     benefits: [
       'Improve balance and stability',
@@ -43,7 +43,7 @@ export const freeExercises: Exercise[] = [
     duration: 8,
     difficulty: 'beginner',
     category: 'Balance',
-    thumbnailUrl: '/thumbnails/balance-basics.jpg',
+    thumbnailUrl: '/thumbnails/free-balance.jpg',
     videoUrl: '/videos/balance-basics.mp4',
     benefits: [
       'Reduce fall risk',
@@ -65,7 +65,7 @@ export const beginnerExercises: Exercise[] = [
     duration: 15,
     difficulty: 'beginner',
     category: 'Week 1',
-    thumbnailUrl: '/thumbnails/rooting.jpg',
+    thumbnailUrl: '/thumbnails/week1-day1.jpg',
     videoUrl: '/videos/week1-day1.mp4',
     benefits: [
       'Establish proper posture',
@@ -82,7 +82,7 @@ export const beginnerExercises: Exercise[] = [
     duration: 15,
     difficulty: 'beginner',
     category: 'Week 1',
-    thumbnailUrl: '/thumbnails/weight-shift.jpg',
+    thumbnailUrl: '/thumbnails/week1-day2.jpg',
     videoUrl: '/videos/week1-day2.mp4',
     benefits: [
       'Improve balance',
@@ -99,7 +99,7 @@ export const beginnerExercises: Exercise[] = [
     duration: 15,
     difficulty: 'beginner',
     category: 'Week 1',
-    thumbnailUrl: '/thumbnails/cloud-hands.jpg',
+    thumbnailUrl: '/thumbnails/week1-day3.jpg',
     videoUrl: '/videos/week1-day3.mp4',
     benefits: [
       'Increase shoulder mobility',
@@ -116,7 +116,7 @@ export const beginnerExercises: Exercise[] = [
     duration: 18,
     difficulty: 'beginner',
     category: 'Week 1',
-    thumbnailUrl: '/thumbnails/first-walk.jpg',
+    thumbnailUrl: '/thumbnails/week1-day4.jpg',
     videoUrl: '/videos/week1-day4.mp4',
     benefits: [
       'Practice integrated movement',
@@ -133,7 +133,7 @@ export const beginnerExercises: Exercise[] = [
     duration: 12,
     difficulty: 'beginner',
     category: 'Week 1',
-    thumbnailUrl: '/thumbnails/rest-reflect.jpg',
+    thumbnailUrl: '/thumbnails/week1-day5.jpg',
     videoUrl: '/videos/week1-day5.mp4',
     benefits: [
       'Promote recovery',
@@ -151,7 +151,7 @@ export const beginnerExercises: Exercise[] = [
     duration: 18,
     difficulty: 'beginner',
     category: 'Week 2',
-    thumbnailUrl: '/thumbnails/breathing-walk.jpg',
+    thumbnailUrl: '/thumbnails/week2-day1.jpg',
     videoUrl: '/videos/week2-day1.mp4',
     benefits: [
       'Increase oxygen flow',
@@ -168,7 +168,7 @@ export const beginnerExercises: Exercise[] = [
     duration: 17,
     difficulty: 'beginner',
     category: 'Week 2',
-    thumbnailUrl: '/thumbnails/hip-opening.jpg',
+    thumbnailUrl: '/thumbnails/week2-day2.jpg',
     videoUrl: '/videos/week2-day2.mp4',
     benefits: [
       'Increase hip flexibility',
@@ -185,7 +185,7 @@ export const beginnerExercises: Exercise[] = [
     duration: 16,
     difficulty: 'beginner',
     category: 'Week 2',
-    thumbnailUrl: '/thumbnails/stability.jpg',
+    thumbnailUrl: '/thumbnails/week2-day3.jpg',
     videoUrl: '/videos/week2-day3.mp4',
     benefits: [
       'Further reduce fall risk',
@@ -203,7 +203,7 @@ export const beginnerExercises: Exercise[] = [
     duration: 20,
     difficulty: 'beginner',
     category: 'Week 3',
-    thumbnailUrl: '/thumbnails/week3-flow.jpg',
+    thumbnailUrl: '/thumbnails/week3-integration.jpg',
     videoUrl: '/videos/week3.mp4',
     benefits: [
       'Practice full integration',
@@ -241,7 +241,7 @@ export const intermediateExercises: Exercise[] = [
     duration: 25,
     difficulty: 'intermediate',
     category: 'Mobility',
-    thumbnailUrl: '/thumbnails/deep-hip.jpg',
+    thumbnailUrl: '/thumbnails/hip-mobility.jpg',
     videoUrl: '/videos/deep-hip.mp4',
     benefits: [
       'Significant flexibility gains',
@@ -292,7 +292,7 @@ export const intermediateExercises: Exercise[] = [
     duration: 26,
     difficulty: 'intermediate',
     category: 'Mindfulness',
-    thumbnailUrl: '/thumbnails/stress-relief.jpg',
+    thumbnailUrl: '/thumbnails/stress-reduction.jpg',
     videoUrl: '/videos/stress-relief.mp4',
     benefits: [
       'Lower cortisol levels',
@@ -330,7 +330,7 @@ export const expertExercises: Exercise[] = [
     duration: 45,
     difficulty: 'expert',
     category: 'Creative',
-    thumbnailUrl: '/thumbnails/creative.jpg',
+    thumbnailUrl: '/thumbnails/creative-expression.jpg',
     videoUrl: '/videos/creative.mp4',
     benefits: [
       'Develop personal style',
@@ -381,7 +381,7 @@ export const expertExercises: Exercise[] = [
     duration: 38,
     difficulty: 'expert',
     category: 'Teaching',
-    thumbnailUrl: '/thumbnails/teaching.jpg',
+    thumbnailUrl: '/thumbnails/teaching-tai-chi.jpg',
     videoUrl: '/videos/teaching.mp4',
     benefits: [
       'Develop teaching skills',
