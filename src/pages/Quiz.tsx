@@ -71,9 +71,21 @@ export const Quiz: React.FC = () => {
   }, [currentQuestion]);
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#fafaf9' }}>
+    <div className="min-h-screen relative" style={{ backgroundColor: '#fafaf9' }}>
+      {/* Background Image */}
+      <div className="fixed inset-0 z-0">
+        <img
+          src={`/quiz-bg-${(currentQuestionIndex % 3) + 1}.jpg`}
+          alt="Background"
+          className="w-full h-full object-cover opacity-10"
+          onError={(e) => {
+            e.currentTarget.style.display = 'none';
+          }}
+        />
+      </div>
+
       {/* Header */}
-      <div className="bg-white shadow-sm sticky top-0 z-10">
+      <div className="bg-white shadow-sm sticky top-0 z-10 relative">
         <div className="max-w-2xl mx-auto px-5 py-5">
           <div className="flex items-center justify-between mb-4">
             {currentQuestionIndex > 0 && currentQuestion.type !== 'info' ? (
@@ -108,7 +120,7 @@ export const Quiz: React.FC = () => {
       </div>
 
       {/* Question Content */}
-      <div className="max-w-2xl mx-auto px-5 py-8 pb-24">
+      <div className="max-w-2xl mx-auto px-5 py-8 pb-24 relative z-1">
         {currentQuestion.type === 'info' && currentQuestion.infoContent ? (
           <InfoScreen
             title={currentQuestion.infoContent.title}
