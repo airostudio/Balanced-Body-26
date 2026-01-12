@@ -40,33 +40,36 @@ export const Home: React.FC = () => {
                   ✨ Trusted by 50,000+ seniors worldwide
                 </p>
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-2 leading-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
                 Gentle Movement,
-                <span className="block">Powerful Results</span>
+                <span className="block relative inline-block">
+                  Powerful Results
+                  {/* Marker highlight effect behind text */}
+                  <span className="absolute inset-0 -z-10 -mx-2 my-1">
+                    <svg viewBox="0 0 500 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full" preserveAspectRatio="none">
+                      <path
+                        d="M5,40 Q40,32 80,38 T160,42 Q200,45 240,38 T320,42 Q360,45 400,40 T480,42 Q490,43 495,40"
+                        fill="none"
+                        stroke="#22c55e"
+                        strokeWidth="35"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        opacity="0.4"
+                        style={{
+                          filter: 'url(#markerTexture)',
+                        }}
+                      />
+                      <defs>
+                        <filter id="markerTexture" x="-20%" y="-20%" width="140%" height="140%">
+                          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" result="noise" seed="5" />
+                          <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" />
+                          <feGaussianBlur stdDeviation="0.5" />
+                        </filter>
+                      </defs>
+                    </svg>
+                  </span>
+                </span>
               </h1>
-              {/* Brush stroke underline - Zorro Z style */}
-              <div className="mb-6 mx-auto lg:mx-0 w-full max-w-md lg:max-w-lg">
-                <svg viewBox="0 0 400 30" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
-                  <path
-                    d="M10 15 Q 50 12, 100 14 T 200 15 Q 250 16, 300 13 T 390 15"
-                    stroke="#22c55e"
-                    strokeWidth="14"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    fill="none"
-                    opacity="0.85"
-                    style={{
-                      filter: 'url(#roughness)',
-                    }}
-                  />
-                  <defs>
-                    <filter id="roughness">
-                      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" seed="3" />
-                      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G" />
-                    </filter>
-                  </defs>
-                </svg>
-              </div>
               <p className="text-lg md:text-xl text-gray-700 mb-8 leading-relaxed">
                 Transform your health with Tai Chi designed specifically for seniors.
                 Lose weight, improve balance, and feel younger—all from the comfort of home.
