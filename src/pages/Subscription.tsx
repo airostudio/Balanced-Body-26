@@ -115,13 +115,41 @@ export const Subscription: React.FC = () => {
                     e.stopPropagation();
                     handleSelectPlan(plan.id);
                   }}
-                  className={`w-full py-3 rounded-lg font-semibold transition-colors ${
+                  className={`relative w-full py-3 rounded-lg font-semibold transition-all ${
                     selectedTier === plan.id
                       ? 'bg-primary-500 text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
-                  {selectedTier === plan.id ? 'Selected' : 'Select Plan'}
+                  <span className="relative z-10">
+                    {selectedTier === plan.id ? 'Selected' : 'Select Plan'}
+                  </span>
+                  {/* Marker highlight effect for selected plan */}
+                  {selectedTier === plan.id && (
+                    <span className="absolute inset-0 -z-10 opacity-0 animate-fade-out pointer-events-none">
+                      <svg viewBox="0 0 300 50" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full" preserveAspectRatio="none">
+                        <path
+                          d="M5,25 Q40,20 80,24 T160,26 Q200,28 240,24 T290,26"
+                          fill="none"
+                          stroke="#22c55e"
+                          strokeWidth="30"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          opacity="0.5"
+                          style={{
+                            filter: 'url(#markerHighlight)',
+                          }}
+                        />
+                        <defs>
+                          <filter id="markerHighlight">
+                            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" result="noise" seed="5" />
+                            <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G" />
+                            <feGaussianBlur stdDeviation="0.5" />
+                          </filter>
+                        </defs>
+                      </svg>
+                    </span>
+                  )}
                 </button>
               </div>
             </div>

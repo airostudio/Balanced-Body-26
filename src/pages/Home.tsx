@@ -40,30 +40,40 @@ export const Home: React.FC = () => {
                   ✨ Trusted by 50,000+ seniors worldwide
                 </p>
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight relative">
                 Gentle Movement,
-                <span className="block relative inline-block">
-                  Powerful Results
+                <span className="block relative" style={{ zIndex: 1 }}>
+                  <span className="relative" style={{ zIndex: 2 }}>Powerful Results</span>
                   {/* Marker highlight effect behind text */}
-                  <span className="absolute inset-0 -z-10 -mx-2 my-1">
-                    <svg viewBox="0 0 500 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full" preserveAspectRatio="none">
+                  <span
+                    className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[70%] -mx-2"
+                    style={{ zIndex: 0 }}
+                  >
+                    <svg
+                      viewBox="0 0 500 60"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-full h-full"
+                      preserveAspectRatio="none"
+                      style={{ display: 'block' }}
+                    >
                       <path
-                        d="M5,40 Q40,32 80,38 T160,42 Q200,45 240,38 T320,42 Q360,45 400,40 T480,42 Q490,43 495,40"
+                        d="M5,30 Q50,22 100,28 T200,32 Q250,35 300,28 T400,32 Q450,35 495,30"
                         fill="none"
                         stroke="#22c55e"
-                        strokeWidth="35"
+                        strokeWidth="40"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        opacity="0.4"
+                        opacity="0.45"
                         style={{
                           filter: 'url(#markerTexture)',
                         }}
                       />
                       <defs>
                         <filter id="markerTexture" x="-20%" y="-20%" width="140%" height="140%">
-                          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" result="noise" seed="5" />
-                          <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" />
-                          <feGaussianBlur stdDeviation="0.5" />
+                          <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" result="noise" seed="7" />
+                          <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5" xChannelSelector="R" yChannelSelector="G" />
+                          <feGaussianBlur stdDeviation="0.6" />
                         </filter>
                       </defs>
                     </svg>
