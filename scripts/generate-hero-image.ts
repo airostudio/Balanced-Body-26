@@ -17,14 +17,14 @@ const openai = new OpenAI({
 });
 
 const heroImagePrompt = {
-  id: 'hero-couple-tai-chi',
-  filename: 'hero-couple-tai-chi.jpg',
-  prompt: `A stunning professional photograph of a FIT and HEALTHY older couple in their late 60s with EXCELLENT PHYSIQUES practicing authentic TAI CHI WALKING together in a beautiful sunlit park. The couple has GREAT BODIES showing the results of regular tai chi practice - toned arms, good posture, lean and fit appearance, radiating vitality and strength. IMPORTANT: This is TAI CHI, NOT YOGA - they are doing slow, deliberate walking movements with arms in flowing tai chi postures (like "cloud hands" or "grasp bird's tail" positions). They are walking side-by-side in synchronized slow-motion tai chi walking steps, both wearing fitted earth-toned athletic clothing (soft beige and warm orange hues) that shows their fit physiques. The gentleman has silver-gray hair and a strong, athletic build. The lady has white hair in a short elegant style and a graceful, toned figure. They are smiling at each other, showing genuine connection, joy, and confidence in their healthy bodies. Their posture shows classic tai chi stance: knees slightly bent, weight shifting smoothly, arms moving in circular flowing motions characteristic of tai chi (NOT yoga stretches or poses), demonstrating strength and balance. The background shows a peaceful park with soft-focus trees and morning golden hour sunlight filtering through leaves. Professional lifestyle photography, shallow depth of field, warm and inviting atmosphere, natural colors, realistic photo showing vibrant healthy active aging with great fitness, inspiring and achievable feeling. Emphasize their FIT, HEALTHY, ATTRACTIVE physiques as examples of successful tai chi practice. Focus on TAI CHI martial arts walking meditation, not yoga.`,
+  id: 'hero-couple-beach-walking',
+  filename: 'hero-couple-beach-walking.jpg',
+  prompt: `A stunning professional photograph of a FIT and ATTRACTIVE couple over 55 years old (late 50s to early 60s) walking together along a beautiful beach at golden hour. The couple has EXCELLENT PHYSIQUES and GREAT BODIES - toned, lean, and fit, showing the results of an active healthy lifestyle. They are walking barefoot along the shoreline where the waves meet the sand, relaxed and joyful. The gentleman has distinguished silver-gray hair, athletic build with visible muscle tone, and confident posture. The lady has styled silver or light blonde hair, a graceful toned figure, and radiant beauty. Both are wearing casual beach attire in earth tones (beige, soft white, warm sand colors) that shows their fit physiques - perhaps linen or comfortable beach clothing. They are smiling at each other or laughing together, holding hands or walking close side-by-side, showing genuine connection, romance, and joy. The ocean waves gently lap at their feet. The background shows a pristine beach with soft-focus ocean, gentle waves, and stunning golden hour sunset lighting casting warm glowing light across the scene. Professional lifestyle photography, shallow depth of field, warm romantic atmosphere, natural colors, realistic photo showing vibrant healthy active aging over 55 with great fitness and attractiveness. Emphasize their FIT, HEALTHY, GOOD-LOOKING physiques as examples of successful healthy living and fitness. Beautiful, inspiring, aspirational yet achievable feeling.`,
 };
 
 async function generateHeroImage(): Promise<void> {
   try {
-    console.log('Generating hero image: Older couple doing Tai Chi Walking...\n');
+    console.log('Generating hero image: Fit attractive couple over 55 walking along beach...\n');
 
     const response = await openai.images.generate({
       model: 'dall-e-3',

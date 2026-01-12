@@ -118,8 +118,8 @@ export const Home: React.FC = () => {
             <div className="relative">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=900&fit=crop&q=80"
-                  alt="Fit older couple practicing Tai Chi in beautiful outdoor setting"
+                  src="https://images.unsplash.com/photo-1496337589254-7e19d01cec44?w=800&h=900&fit=crop&q=80"
+                  alt="Fit attractive couple over 55 walking along beautiful beach"
                   className="w-full h-[400px] sm:h-[500px] md:h-[600px] object-cover"
                   onError={(e) => {
                     // Fallback to gradient if image fails
