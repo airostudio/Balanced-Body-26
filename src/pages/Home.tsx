@@ -120,7 +120,7 @@ export const Home: React.FC = () => {
                 <img
                   src="/hero-couple-beach-walking.png"
                   alt="Fit attractive couple over 55 walking along beautiful beach"
-                  className="w-full h-[240px] sm:h-[280px] md:h-[320px] lg:h-[360px] object-contain"
+                  className="w-full h-[240px] sm:h-[280px] md:h-[320px] lg:h-[360px] object-cover"
                   onError={(e) => {
                     // Fallback to gradient if image fails
                     e.currentTarget.style.display = 'none';
