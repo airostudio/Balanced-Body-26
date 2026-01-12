@@ -118,7 +118,7 @@ export const Home: React.FC = () => {
             <div className="relative">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1496337589254-7e19d01cec44?w=800&h=900&fit=crop&q=80"
+                  src="/hero-couple-beach-walking.png"
                   alt="Fit attractive couple over 55 walking along beautiful beach"
                   className="w-full h-[400px] sm:h-[500px] md:h-[600px] object-cover"
                   onError={(e) => {
