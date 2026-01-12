@@ -124,27 +124,57 @@ export const Subscription: React.FC = () => {
                   <span className="relative z-10">
                     {selectedTier === plan.id ? 'Selected' : 'Select Plan'}
                   </span>
-                  {/* Marker highlight effect for selected plan */}
+                  {/* Realistic hand-drawn marker highlight effect for selected plan */}
                   {selectedTier === plan.id && (
                     <span className="absolute inset-0 -z-10 opacity-0 animate-fade-out pointer-events-none">
-                      <svg viewBox="0 0 300 50" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full" preserveAspectRatio="none">
+                      <svg viewBox="0 0 400 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full" preserveAspectRatio="none" style={{ transform: 'rotate(-0.3deg)' }}>
+                        {/* Main rough highlight stroke */}
                         <path
-                          d="M5,25 Q40,20 80,24 T160,26 Q200,28 240,24 T290,26"
+                          d="M8,32 Q20,28 40,31 T80,33 Q120,36 160,31 T240,34 Q280,37 320,32 T380,35 Q390,36 395,33"
                           fill="none"
                           stroke="#22c55e"
-                          strokeWidth="30"
+                          strokeWidth="38"
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          opacity="0.5"
+                          opacity="0.4"
+                          style={{
+                            filter: 'url(#markerHighlight)',
+                          }}
+                        />
+                        {/* Overlapping stroke for texture */}
+                        <path
+                          d="M10,30 Q22,26 42,29 T82,32 Q122,34 162,30 T242,33 Q282,35 322,31 T382,33 Q392,34 397,32"
+                          fill="none"
+                          stroke="#22c55e"
+                          strokeWidth="36"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          opacity="0.3"
                           style={{
                             filter: 'url(#markerHighlight)',
                           }}
                         />
                         <defs>
-                          <filter id="markerHighlight">
-                            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" result="noise" seed="5" />
-                            <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G" />
-                            <feGaussianBlur stdDeviation="0.5" />
+                          <filter id="markerHighlight" x="-30%" y="-30%" width="160%" height="160%">
+                            <feTurbulence
+                              type="fractalNoise"
+                              baseFrequency="1.1 0.7"
+                              numOctaves="4"
+                              result="noise"
+                              seed="9"
+                            />
+                            <feDisplacementMap
+                              in="SourceGraphic"
+                              in2="noise"
+                              scale="4"
+                              xChannelSelector="R"
+                              yChannelSelector="G"
+                              result="displaced"
+                            />
+                            <feGaussianBlur stdDeviation="0.7" in="displaced" result="blurred" />
+                            <feComponentTransfer in="blurred">
+                              <feFuncA type="linear" slope="1.2" intercept="0"/>
+                            </feComponentTransfer>
                           </filter>
                         </defs>
                       </svg>

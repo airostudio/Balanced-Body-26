@@ -44,36 +44,70 @@ export const Home: React.FC = () => {
                 Gentle Movement,
                 <span className="block relative" style={{ zIndex: 1 }}>
                   <span className="relative" style={{ zIndex: 2 }}>Powerful Results</span>
-                  {/* Marker highlight effect behind text */}
+                  {/* Realistic hand-drawn marker highlight effect behind text */}
                   <span
-                    className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[70%] -mx-2"
-                    style={{ zIndex: 0 }}
+                    className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[85%] -mx-3"
+                    style={{ zIndex: 0, transform: 'translateY(-50%) rotate(-0.5deg)' }}
                   >
                     <svg
-                      viewBox="0 0 500 60"
+                      viewBox="0 0 600 80"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                       className="w-full h-full"
                       preserveAspectRatio="none"
                       style={{ display: 'block' }}
                     >
+                      {/* Main highlight stroke - rough and irregular */}
                       <path
-                        d="M5,30 Q50,22 100,28 T200,32 Q250,35 300,28 T400,32 Q450,35 495,30"
+                        d="M8,42 Q15,38 25,41 T45,43 Q65,46 85,41 T125,44 Q155,47 185,43 T235,45 Q275,49 315,44 T375,46 Q425,50 475,45 T535,47 Q560,49 590,44"
                         fill="none"
                         stroke="#22c55e"
-                        strokeWidth="40"
+                        strokeWidth="45"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        opacity="0.45"
+                        opacity="0.35"
                         style={{
-                          filter: 'url(#markerTexture)',
+                          filter: 'url(#roughMarker)',
+                        }}
+                      />
+                      {/* Second overlapping stroke for depth and texture */}
+                      <path
+                        d="M10,40 Q18,36 28,39 T50,42 Q70,44 90,40 T130,43 Q160,45 190,42 T240,44 Q280,47 320,43 T380,45 Q430,48 480,44 T540,46 Q565,47 592,43"
+                        fill="none"
+                        stroke="#22c55e"
+                        strokeWidth="42"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        opacity="0.25"
+                        style={{
+                          filter: 'url(#roughMarker)',
                         }}
                       />
                       <defs>
-                        <filter id="markerTexture" x="-20%" y="-20%" width="140%" height="140%">
-                          <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" result="noise" seed="7" />
-                          <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5" xChannelSelector="R" yChannelSelector="G" />
-                          <feGaussianBlur stdDeviation="0.6" />
+                        <filter id="roughMarker" x="-30%" y="-30%" width="160%" height="160%">
+                          {/* Create turbulent noise for rough texture */}
+                          <feTurbulence
+                            type="fractalNoise"
+                            baseFrequency="1.2 0.8"
+                            numOctaves="5"
+                            result="noise"
+                            seed="8"
+                          />
+                          {/* Displace the stroke for irregular edges */}
+                          <feDisplacementMap
+                            in="SourceGraphic"
+                            in2="noise"
+                            scale="4.5"
+                            xChannelSelector="R"
+                            yChannelSelector="G"
+                            result="displaced"
+                          />
+                          {/* Add slight blur for ink bleed effect */}
+                          <feGaussianBlur stdDeviation="0.8" in="displaced" result="blurred" />
+                          {/* Increase contrast for more visible rough edges */}
+                          <feComponentTransfer in="blurred">
+                            <feFuncA type="linear" slope="1.3" intercept="0"/>
+                          </feComponentTransfer>
                         </filter>
                       </defs>
                     </svg>
