@@ -44,25 +44,25 @@ export const Home: React.FC = () => {
                 Gentle Movement,
                 <span className="block">Powerful Results</span>
               </h1>
-              {/* Brush stroke underline */}
-              <div className="mb-6 mx-auto lg:mx-0 w-40 md:w-48">
-                <svg viewBox="0 0 200 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
+              {/* Brush stroke underline - Zorro Z style */}
+              <div className="mb-6 mx-auto lg:mx-0 w-full max-w-md lg:max-w-lg">
+                <svg viewBox="0 0 400 30" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
                   <path
-                    d="M5 10 Q 25 6, 50 9 T 100 10 Q 125 11, 150 8 T 195 10"
+                    d="M10 15 Q 50 12, 100 14 T 200 15 Q 250 16, 300 13 T 390 15"
                     stroke="#22c55e"
-                    strokeWidth="6"
+                    strokeWidth="14"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     fill="none"
-                    opacity="0.9"
+                    opacity="0.85"
                     style={{
                       filter: 'url(#roughness)',
                     }}
                   />
                   <defs>
                     <filter id="roughness">
-                      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" result="noise" seed="2" />
-                      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" xChannelSelector="R" yChannelSelector="G" />
+                      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" seed="3" />
+                      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G" />
                     </filter>
                   </defs>
                 </svg>
