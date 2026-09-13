@@ -10,7 +10,7 @@ export const freeExercises: Exercise[] = [
     difficulty: 'beginner',
     category: 'Introduction',
     thumbnailUrl: '/thumbnails/free-intro.jpg',
-    videoUrl: '/videos/intro.mp4',
+    videoUrl: '/TCWalk1.mp4',
     benefits: [
       'Understand Tai Chi principles',
       'Learn proper breathing techniques',
@@ -27,7 +27,7 @@ export const freeExercises: Exercise[] = [
     difficulty: 'beginner',
     category: 'Walking',
     thumbnailUrl: '/thumbnails/free-mindful-steps.jpg',
-    videoUrl: '/videos/mindful-steps.mp4',
+    videoUrl: '/TCWalk1.mp4',
     benefits: [
       'Improve balance and stability',
       'Reduce joint stiffness',
@@ -44,7 +44,7 @@ export const freeExercises: Exercise[] = [
     difficulty: 'beginner',
     category: 'Balance',
     thumbnailUrl: '/thumbnails/free-balance.jpg',
-    videoUrl: '/videos/balance-basics.mp4',
+    videoUrl: '/TCWalk1.mp4',
     benefits: [
       'Reduce fall risk',
       'Strengthen core muscles',
