@@ -85,17 +85,17 @@ export const Quiz: React.FC = () => {
       </div>
 
       {/* Header */}
-      <div className="bg-white shadow-sm sticky top-0 z-10 relative">
+      <div className="bg-gray-800 shadow-sm sticky top-0 z-10 relative">
         <div className="max-w-2xl mx-auto px-5 py-5">
           <div className="flex items-center justify-between mb-4">
             {currentQuestionIndex > 0 && currentQuestion.type !== 'info' ? (
               <button
                 onClick={handleBack}
-                className="p-2.5 hover:bg-gray-100 rounded-xl transition-all active:scale-95"
+                className="p-2.5 hover:bg-gray-700 rounded-xl transition-all active:scale-95"
                 aria-label="Go back"
               >
                 <svg
-                  className="w-6 h-6 text-gray-700"
+                  className="w-6 h-6 text-white"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -111,7 +111,7 @@ export const Quiz: React.FC = () => {
             ) : (
               <div className="w-11" /> /* Spacer */
             )}
-            <div className="text-base text-gray-600 font-semibold tracking-wide">
+            <div className="text-base text-white font-semibold tracking-wide">
               {currentQuestionIndex + 1}/{totalQuestions}
             </div>
           </div>

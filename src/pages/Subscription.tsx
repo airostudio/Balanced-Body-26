@@ -25,12 +25,12 @@ export const Subscription: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50">
       {/* Header */}
-      <div className="bg-white border-b">
+      <div className="bg-gray-800 border-b border-gray-700">
         <div className="max-w-6xl mx-auto px-4 py-6">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 text-center">
+          <h1 className="text-3xl md:text-4xl font-bold text-white text-center">
             Choose Your Path to Wellness
           </h1>
-          <p className="text-gray-600 text-center mt-2 max-w-2xl mx-auto">
+          <p className="text-gray-300 text-center mt-2 max-w-2xl mx-auto">
             Start your personalized Tai Chi journey with a plan that fits your goals and lifestyle
           </p>
         </div>
