@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useStore } from '../store/useStore';
 import { allExercises } from '../data/exercises';
@@ -9,6 +9,9 @@ export const ExercisePlayer: React.FC = () => {
   const { updateProgress, progress } = useStore();
   const [isPlaying, setIsPlaying] = useState(false);
   const [showCompletion, setShowCompletion] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   // Find the exercise
   const exercise = [
@@ -24,9 +27,43 @@ export const ExercisePlayer: React.FC = () => {
     }
   }, [exercise, navigate]);
 
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleTimeUpdate = () => setCurrentTime(video.currentTime);
+    const handleLoadedMetadata = () => setDuration(video.duration);
+    const handleEnded = () => {
+      setIsPlaying(false);
+      handleComplete();
+    };
+
+    video.addEventListener('timeupdate', handleTimeUpdate);
+    video.addEventListener('loadedmetadata', handleLoadedMetadata);
+    video.addEventListener('ended', handleEnded);
+
+    return () => {
+      video.removeEventListener('timeupdate', handleTimeUpdate);
+      video.removeEventListener('loadedmetadata', handleLoadedMetadata);
+      video.removeEventListener('ended', handleEnded);
+    };
+  }, []);
+
   if (!exercise) {
     return null;
   }
+
+  const togglePlay = () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (isPlaying) {
+      video.pause();
+    } else {
+      video.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
 
   const handleComplete = () => {
     setShowCompletion(true);
@@ -45,22 +82,39 @@ export const ExercisePlayer: React.FC = () => {
     }, 3000);
   };
 
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+  };
+
+  const progressPercent = duration > 0 ? (currentTime / duration) * 100 : 0;
+
   return (
     <div className="min-h-screen bg-gray-900">
       {/* Video Player Area */}
       <div className="relative w-full h-screen max-h-[70vh] bg-black">
-        {/* Placeholder for video */}
-        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900">
-          <div className="text-center">
-            <div className="w-32 h-32 bg-primary-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-glow">
-              <svg className="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20">
+        {/* Video Element */}
+        <video
+          ref={videoRef}
+          src={exercise.videoUrl}
+          className="w-full h-full object-contain"
+          playsInline
+          onClick={togglePlay}
+        >
+          Your browser does not support the video tag.
+        </video>
+
+        {/* Play overlay when paused */}
+        {!isPlaying && (
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div className="w-24 h-24 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center shadow-2xl">
+              <svg className="w-12 h-12 text-white ml-1" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
               </svg>
             </div>
-            <p className="text-white/80 text-lg mb-2">Video Player</p>
-            <p className="text-white/60 text-sm">{exercise.title}</p>
           </div>
-        </div>
+        )}
 
         {/* Top Controls */}
         <div className="absolute top-0 left-0 right-0 p-5 bg-gradient-to-b from-black/60 to-transparent z-10">
@@ -78,15 +132,27 @@ export const ExercisePlayer: React.FC = () => {
         <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-black/80 via-black/50 to-transparent z-10">
           <div className="max-w-4xl mx-auto">
             {/* Progress bar */}
-            <div className="w-full h-1.5 bg-white/20 rounded-full mb-4 overflow-hidden">
-              <div className="h-full bg-primary-500 rounded-full" style={{ width: '45%' }} />
+            <div
+              className="w-full h-1.5 bg-white/20 rounded-full mb-4 overflow-hidden cursor-pointer"
+              onClick={(e) => {
+                const video = videoRef.current;
+                if (!video) return;
+                const rect = e.currentTarget.getBoundingClientRect();
+                const pos = (e.clientX - rect.left) / rect.width;
+                video.currentTime = pos * video.duration;
+              }}
+            >
+              <div
+                className="h-full bg-primary-500 rounded-full transition-all"
+                style={{ width: `${progressPercent}%` }}
+              />
             </div>
 
             {/* Play controls */}
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
                 <button
-                  onClick={() => setIsPlaying(!isPlaying)}
+                  onClick={togglePlay}
                   className="p-3 bg-primary-500 rounded-full text-white hover:bg-primary-600 transition-all shadow-lg"
                 >
                   {isPlaying ? (
@@ -101,7 +167,9 @@ export const ExercisePlayer: React.FC = () => {
                 </button>
 
                 <div className="text-white">
-                  <div className="text-sm font-medium">12:34 / {exercise.duration}:00</div>
+                  <div className="text-sm font-medium">
+                    {formatTime(currentTime)} / {formatTime(duration)}
+                  </div>
                 </div>
               </div>
 
