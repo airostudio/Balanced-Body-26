@@ -10,10 +10,20 @@ export const Home: React.FC = () => {
       <nav className="bg-gray-800 border-b border-gray-700 sticky top-0 z-50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center shadow-lg">
-                <span className="text-white text-xl font-bold">B</span>
-              </div>
+            <div className="flex items-center gap-3">
+              <img
+                src="/balanced-body-logo.png"
+                alt="Balanced Body Logo"
+                className="w-12 h-12 object-contain"
+                onError={(e) => {
+                  // Fallback to B icon if logo fails to load
+                  e.currentTarget.style.display = 'none';
+                  const fallback = document.createElement('div');
+                  fallback.className = 'w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center shadow-lg';
+                  fallback.innerHTML = '<span class="text-white text-xl font-bold">B</span>';
+                  e.currentTarget.parentElement?.insertBefore(fallback, e.currentTarget);
+                }}
+              />
               <div>
                 <h1 className="text-xl font-bold text-white">Balanced Body</h1>
                 <p className="text-xs text-gray-300">Tai Chi for Seniors</p>
@@ -547,9 +557,19 @@ export const Home: React.FC = () => {
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white text-sm font-bold">B</span>
-                </div>
+                <img
+                  src="/balanced-body-logo.png"
+                  alt="Balanced Body Logo"
+                  className="w-10 h-10 object-contain"
+                  onError={(e) => {
+                    // Fallback to B icon if logo fails to load
+                    e.currentTarget.style.display = 'none';
+                    const fallback = document.createElement('div');
+                    fallback.className = 'w-8 h-8 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg flex items-center justify-center';
+                    fallback.innerHTML = '<span class="text-white text-sm font-bold">B</span>';
+                    e.currentTarget.parentElement?.insertBefore(fallback, e.currentTarget);
+                  }}
+                />
                 <span className="text-white font-bold">Balanced Body</span>
               </div>
               <p className="text-sm text-gray-500">
